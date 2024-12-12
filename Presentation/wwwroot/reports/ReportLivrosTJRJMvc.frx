@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="12/12/2024 16:12:51" ReportInfo.Modified="12/12/2024 16:13:24" ReportInfo.CreatorVersion="2022.2.17.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="livrosList" ReferenceName="livrosList" DataType="System.Collections.Generic.List`1[[Desafio.Spassu.TJRJ.Domain.Response.LivroAssuntosResponse, Desafio.Spassu.TJRJ.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="AssuntoId" DataType="System.Int32"/>
+      <Column Name="Descricao" DataType="System.String"/>
+      <Column Name="Checked" DataType="System.Boolean" BindableControl="CheckBox"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+</Report>

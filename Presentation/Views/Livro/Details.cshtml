@@ -1,0 +1,94 @@
+﻿@model Desafio.Spassu.TJRJ.MVC.Models.LivroAssuntosAutoresViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do registro";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Livro</h4>
+    <hr />
+    <dl class="row">  
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Editora)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Editora)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Edicao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Edicao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AnoPublicacao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AnoPublicacao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+        <dt class="col-sm-2">
+            Assuntos
+        </dt>
+         <dd class="col-sm-10">
+              @if (Model.Assuntos != null)
+              {
+                   foreach (var item in Model.Assuntos)
+                   {
+                       if (item.Checked)
+                       {
+                           <div><span class="glyphicon glyphicon-list-alt"></span><Text>&nbsp;</Text>@item.Descricao</div>
+                       }
+                   }
+              }
+              else
+              {
+                 <span class="glyphicon glyphicon-list-alt"></span><text>Sem assuntos Registrados</Text>
+              }
+        </dd>        
+        <dt class="col-sm-2">          
+            Autores        
+        </dt>
+        <dd class="col-sm-10">
+              @if (Model.Autores != null)
+              {
+                   foreach (var item in Model.Autores)
+                   {
+                       if (item.Checked)
+                       {
+                           <div><span class="glyphicon glyphicon-list-alt"></span><Text>&nbsp;</Text>@item.Nome</div>
+                       }
+                   }
+              }
+              else
+              {
+                 <span class="glyphicon glyphicon-list-alt"></span><text>Sem assuntos Registrados</Text>
+              }
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LivroId">Editar</a> |
+    <a asp-action="Index">Ir para listagem</a>
+</div>

@@ -1,0 +1,94 @@
+﻿@model Desafio.Spassu.TJRJ.MVC.Models.LivroAssuntosAutoresViewModel
+
+@{
+    ViewData["Title"] = "Edição de livro";
+}
+
+<h1>Edição</h1>
+
+<h4>Livro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          
+            <input type="hidden" asp-for="LivroId" />
+
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Edicao" class="control-label"></label>
+                <input asp-for="Edicao" class="form-control" />
+                <span asp-validation-for="Edicao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Editora" class="control-label"></label>
+                <input asp-for="Editora" class="form-control" />
+                <span asp-validation-for="Editora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnoPublicacao" class="control-label"></label>
+                <input asp-for="AnoPublicacao" class="form-control" />
+                <span asp-validation-for="AnoPublicacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Preco" class="control-label"></label>
+                <input asp-for="Preco" class="form-control" />
+                <span asp-validation-for="Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Ativo" /> @Html.DisplayNameFor(model => model.Ativo)
+                </label>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Assuntos, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                        @for (int i = 0; i < Model.Assuntos.Count(); i++)
+                    {
+                        @Html.EditorFor(m => Model.Assuntos[i].Checked)<text>&nbsp;</text>
+                        @Html.DisplayFor(m => Model.Assuntos[i].Descricao)<text>&nbsp;</text>
+                        <br />
+                        @Html.HiddenFor(m => Model.Assuntos[i].Descricao)
+                        @Html.HiddenFor(m => Model.Assuntos[i].AssuntoId)
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Autores, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @for (int i = 0; i < Model.Autores.Count(); i++)
+                    {
+                        @Html.EditorFor(m => Model.Autores[i].Checked)
+
+                        <text>&nbsp;</text>
+                        @Html.DisplayFor(m => Model.Autores[i].Nome)
+
+                        <text>&nbsp;</text>
+                        <br />
+                        @Html.HiddenFor(m => Model.Autores[i].Nome)
+                        @Html.HiddenFor(m => Model.Autores[i].AutorId)
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Ir para listagem</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
